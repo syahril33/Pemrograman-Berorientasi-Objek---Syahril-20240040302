@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Biodata Mahasiswa</title>
+    <style>
+        /* Gaya untuk meniru tampilan aplikasi desktop (GUI) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .window {
+            background-color: #f0f0f0;
+            border: 2px solid #555;
+            width: 500px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        .title-bar {
+            background-color: #fff;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-bottom: 1px solid #aaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .window-content {
+            padding: 15px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fafafa;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+        .form-group {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .form-group label {
+            width: 130px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 4px;
+            border: 1px solid #888;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .button-group button {
+            padding: 5px 25px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-weight: bold;
+            border: 1px solid #888;
+            background-color: #e1e1e1;
+        }
+        .button-group button:hover {
+            background-color: #d4d4d4;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            font-family: monospace; /* Font monospace agar titik dua (:) bisa sejajar */
+            font-size: 13px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            resize: none;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Aplikasi Biodata Mahasiswa</span>
+            <span>— ☐ ✕</span>
+        </div>
+
+        <div class="window-content">
+            <fieldset>
+                <legend>Input Data</legend>
+                <div class="form-group">
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" placeholder="Masukkan NIM">
+                </div>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" placeholder="Masukkan Nama">
+                </div>
+                <div class="form-group">
+                    <label for="prodi">Program Studi</label>
+                    <input type="text" id="prodi" placeholder="Masukkan Program Studi">
+                </div>
+                
+                <div class="button-group">
+                    <button onclick="tampilkanData()">Tampilkan</button>
+                    <button onclick="resetData()">Reset</button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Output</legend>
+                <textarea id="output" readonly></textarea>
+            </fieldset>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan data ke kotak output
+        function tampilkanData() {
+            // Mengambil nilai dari kolom input
+            const nim = document.getElementById('nim').value;
+            const nama = document.getElementById('nama').value;
+            const prodi = document.getElementById('prodi').value;
+
+            // Menyusun format teks output (menggunakan spasi agar sejajar)
+            const hasilText = 
+`========== BIODATA MAHASISWA ==========
+
+NIM             : ${nim}
+Nama            : ${nama}
+Program Studi   : ${prodi}`;
+
+            // Menampilkan teks ke dalam textarea output
+            document.getElementById('output').value = hasilText;
+        }
+
+        // Fungsi untuk membersihkan form dan output
+        function resetData() {
+            // Membersihkan input
+            document.getElementById('nim').value = '';
+            document.getElementById('nama').value = '';
+            document.getElementById('prodi').value = '';
+
+            // Membersihkan output (sesuai instruksi poin ke-3)
+            document.getElementById('output').value = '';
+        }
+    </script>
+
+</body>
+</html>
